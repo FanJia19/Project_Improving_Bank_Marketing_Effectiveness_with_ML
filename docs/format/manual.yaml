@@ -1,0 +1,37 @@
+---
+title: Data Analytics Project on Bank Marketing Data Set
+author: 
+- Fan Jia
+- Jiawei Li
+- Strahinja Trenkic
+- Qiqi Zhou
+disable-header-and-footer: true
+toc: true
+toc-depth: 1
+numbersections: false
+monofont: JetBrains Mono
+papersize: a4
+dpi: 300
+geometry:
+  - top=30mm
+  - left=30mm
+  - right=30mm
+  - bottom=30mm
+  - heightrounded
+documentclass: report
+classoption:
+  - oneside
+header-includes: |
+  \usepackage{float}
+  \let\origfigure\figure
+  \let\endorigfigure\endfigure
+  \renewenvironment{figure}[1][2] {
+      \expandafter\origfigure\expandafter[H]
+  } {
+      \endorigfigure
+  }
+bibliography: ../citations/citations.bib
+link-citations: true
+nocite: |
+  @*
+---
