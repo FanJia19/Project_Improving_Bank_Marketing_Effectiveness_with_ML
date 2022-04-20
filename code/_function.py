@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np 
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.metrics import (
@@ -50,6 +50,7 @@ def import_dataset(filename):
         "nov": 11,
         "dec": 12,
     }
+    # Replace month strings with numbers
     bank_mkt["month"] = bank_mkt["month"].replace(month_map)
     # `day_of_week` will be encoded to the corresponding number, e.g. "wed" -> 3
     dow_map = {"mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5}
