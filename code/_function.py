@@ -31,12 +31,16 @@ def import_dataset(filename):
     """
     bank_mkt = pd.read_csv(
         filename,
+        # Additional strings to recognize as NA/NaN. 
         na_values=["unknown", "nonexistent"],
+        # Values to consider as True, list
         true_values=["yes", "success"],
+        # Values to consider as False, list
         false_values=["no", "failure"],
     )
     # Treat pdays = 999 as missing values
     bank_mkt["pdays"] = bank_mkt["pdays"].replace(999, pd.NA)
+    
     # `month` will be encoded to the corresponding number, e.g. "mar" -> 3
     month_map = {
         "mar": 3,
@@ -50,11 +54,14 @@ def import_dataset(filename):
         "nov": 11,
         "dec": 12,
     }
+    
     # Replace month strings with numbers
     bank_mkt["month"] = bank_mkt["month"].replace(month_map)
+    
     # `day_of_week` will be encoded to the corresponding number, e.g. "wed" -> 3
     dow_map = {"mon": 1, "tue": 2, "wed": 3, "thu": 4, "fri": 5}
     bank_mkt["day_of_week"] = bank_mkt["day_of_week"].replace(dow_map)
+    
     # Convert types, "Int64" is nullable integer data type in pandas
     bank_mkt = bank_mkt.astype(
         dtype={
@@ -67,7 +74,7 @@ def import_dataset(filename):
             "loan": "boolean",
             "contact": "category",
             "month": "Int64",
-            "day_of_week": "Int64",
+            "day_of_week": "Int64",            
             "duration": "Int64",
             "campaign": "Int64",
             "pdays": "Int64",
@@ -76,8 +83,10 @@ def import_dataset(filename):
             "y": "boolean",
         }
     )
+    
     # Drop 12 duplicated rows
     bank_mkt = bank_mkt.drop_duplicates().reset_index(drop=True)
+    
     # reorder ordinal categorical data
     bank_mkt["education"] = bank_mkt["education"].cat.reorder_categories(
         [

@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# Files:
+code/bank_marketing动手.ipynb
+code/_function动手.py
+code/_figure动手.py

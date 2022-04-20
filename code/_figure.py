@@ -51,7 +51,7 @@ def eda_figures():
     bank_mkt[["date", "y"]].groupby("date").mean().plot.line(ylabel="", legend=False)
     plt.savefig("docs/figures/2_3_Positive_rate_by_month.png")
 
-    # 2_4_Five economic indicators
+    # 2_4_Five economic indicators - Line Plot
     econ_df = bank_mkt.iloc[:, 15:]
     econ_df = econ_df.drop("y", axis=1)
     sc_econ = (econ_df.iloc[:, 0:5] - econ_df.iloc[:, 0:5].min()) / (
